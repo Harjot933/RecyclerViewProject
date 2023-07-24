@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerviewproject.databinding.ActivityMainBinding
 import com.example.recyclerviewproject.databinding.CustomDialogLayoutBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),Clicks {
     private val arrayList = arrayListOf<StudentInfo>()
     private lateinit var binding: ActivityMainBinding
     private lateinit var recyclerAdapter: RecyclerAdapter
     private lateinit var layoutManager: LinearLayoutManager
-    //lateinit var clicks: Clicks
+    lateinit var clicks: Clicks
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -50,35 +50,43 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-}
 
-    /*override fun ClickUpdate(position: Int) {
-        Toast.makeText(this, "hi", Toast.LENGTH_SHORT).show()
+    override fun ClickUpdate(position: Int) {
 
-        var dialog=Dialog(this)
-        var dialogBinding = CustomDialogLayoutBinding.inflate(layoutInflater)
-        dialog.setCancelable(false)
-        dialog.setContentView(dialogBinding.root)
-        dialogBinding.btnAdd.setText("Update")
-        dialogBinding.btnAdd.setOnClickListener {
-            if (dialogBinding.etName.text.toString().isNullOrEmpty()) {
-                dialogBinding.etName.error="Enter your name"
-            } else if (dialogBinding.etRoll.text.toString().isNullOrEmpty()) {
-                dialogBinding.etRoll.error="Enter your roll no"
-            } else {
-                arrayList.set(position,StudentInfo(dialogBinding.etName.text.toString(),dialogBinding.etRoll.text.toString().toInt()))
-                recyclerAdapter.notifyDataSetChanged()
-                dialog.dismiss()
+            Toast.makeText(this, "hi", Toast.LENGTH_SHORT).show()
+
+            var dialog=Dialog(this)
+            var dialogBinding = CustomDialogLayoutBinding.inflate(layoutInflater)
+            dialog.setCancelable(false)
+            dialog.setContentView(dialogBinding.root)
+            dialogBinding.btnAdd.setText("Update")
+            dialogBinding.btnAdd.setOnClickListener {
+                if (dialogBinding.etName.text.toString().isNullOrEmpty()) {
+                    dialogBinding.etName.error="Enter your name"
+                } else if (dialogBinding.etRoll.text.toString().isNullOrEmpty()) {
+                    dialogBinding.etRoll.error="Enter your roll no"
+                } else {
+                    arrayList.set(position,StudentInfo(dialogBinding.etName.text.toString(),dialogBinding.etRoll.text.toString().toInt()))
+                    recyclerAdapter.notifyDataSetChanged()
+                    dialog.dismiss()
+                }
             }
-        }
-        dialog.show()
+            dialog.show()
 
-    }
+        }
 
     override fun ClickDelete(position: Int) {
         arrayList.removeAt(position)
         recyclerAdapter.notifyDataSetChanged()
+
     }
-}*/
+
+}
+
+
+
+
+
+
 
 

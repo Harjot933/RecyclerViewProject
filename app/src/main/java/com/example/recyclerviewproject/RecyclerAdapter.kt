@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapter(var arrayList: ArrayList<StudentInfo>,  MainActivity : AppCompatActivity) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(var arrayList: ArrayList<StudentInfo>, var clicks: Clicks ) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Declaration
         var tvName: TextView = view.findViewById(R.id.tvName)
@@ -30,12 +30,13 @@ class RecyclerAdapter(var arrayList: ArrayList<StudentInfo>,  MainActivity : App
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tvName.text = arrayList[position].name
         holder.tvRoll.text = arrayList[position].roll.toString()
-       // holder.btnUpdate.setOnClickListener {
-         //   clicks.ClickUpdate(position)
-       // holder.btnDelete.setOnClickListener{
-         //   clicks.ClickDelete(position)
-         //   }
-      //  }
+        holder.btnUpdate.setOnClickListener {
+        clicks.ClickUpdate(position)
+        }
+        holder.btnDelete.setOnClickListener{
+            clicks.ClickDelete(position)
+            }
+
 
     }
 }
